@@ -1,9 +1,7 @@
 var mentors = require('../controllers/mentors');
 
 module.exports = function(app) {
-    app.get('/', function (req, res) {
-        mentors.index(req, res);
-    });
+   
     app.get('/allmentors', function (req, res) {
         mentors.AllMentors(req,res);
     });
@@ -28,4 +26,6 @@ module.exports = function(app) {
     app.delete('/delete/rating/:id', function (req, res) {
         mentors.destroyRating(req,res);
     });
+
+
 }

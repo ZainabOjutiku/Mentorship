@@ -3,6 +3,7 @@ var Mentee=require('../models/mentor').mentee;
 var Rating = require('../models/mentor').rating;
 
 module.exports={
+    
     AllMentors : function(req, res){
         Mentor.find({}, function (err, mentors){
             if(err){
