@@ -42,7 +42,7 @@ export class ShowComponent implements OnInit {
     console.log("my rATING", this.newRating)
     let myRating = this._httpService.createRating(this.newRating, id);
     myRating.subscribe(function(data){
-
+      this._router.navigate(["/mentors/._id"]);
     });
     this.newRating ={stars: "", name:" ",reviews: ""}
   }
