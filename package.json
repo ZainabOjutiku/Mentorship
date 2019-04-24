@@ -15,8 +15,9 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-flash": "0.0.2",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.4.22"
+    "express-session": "^1.16.1",
+    "mongoose": "^5.4.22",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {}
 }

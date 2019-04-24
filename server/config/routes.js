@@ -27,6 +27,13 @@ module.exports = function(app) {
     app.delete('/delete/rating/:id', function (req, res) {
         mentors.destroyRating(req,res);
     });
+    //chat componenent
+    app.get('/chat', function(req, res){
+        mentors.chat(req, res);
+    })
 
+    app.all("*", (req,res,next) => {
+        res.sendFile(path.resolve("./public/dist/public/index.html"))
+    });
 
 }

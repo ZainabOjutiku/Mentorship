@@ -45,14 +45,44 @@
 </section>
 <router-outlet></router-outlet>
 
-<!-- Callout -->
+<!-- ChatBox -->
 <section class="callout">
   <div class="container text-center">
-    <h2 class="mx-auto mb-5">Welcome to
-      <em>your</em>
-      next website!</h2>
-    <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/template-overviews/stylish-portfolio/">Download Now!</a>
-  </div>
+    <h2 class="mx-auto mb-4">Chat with our mentor here!</h2>
+    <div id="container">
+        <h1 id="title"><u>Conversation Board</u></h1>
+        <div id="chatbox"></div>
+        <input id="msg" type="text">
+        <button id="btn">Send</button>
+    </div>
+    <script type="text/javascript">
+        var socket = io();
+        var name = prompt("Please enter your name:","Name");
+        var elem = document.getElementById('chatbox');
+        socket.emit("new_user", {name:name});
+        $("#btn").click(function(){
+            socket.emit("new_message", {name:name, message:$('#msg').val()});
+                $('#msg').val("");
+        });
+        socket.on('existing_messages', function(data){
+            for(i in data)
+                $("#chatbox").append("<p>"+data[i].name+": "+data[i].message+"</p>");
+            elem.scrollTop = elem.scrollHeight;
+        });
+        socket.on('update_messages', function(data){
+            $("#chatbox").append("<p>"+data.name+": "+data.message+"</p>");
+            elem.scrollTop = elem.scrollHeight;
+        });
+        socket.on('user_disconnect', function(data){
+            $("#chatbox").append("<p style='color:red'>"+data.name+" has left the chat"+"</p>");
+            elem.scrollTop = elem.scrollHeight;
+        });
+        socket.on('display_new_user', function(data){
+            $("#chatbox").append("<p style='color:green'>"+data.name+" has joined the chat"+"</p>");  	
+            elem.scrollTop = elem.scrollHeight;
+        });
+    </script>
+    </div>
 </section>
 
 <!-- Portfolio -->
