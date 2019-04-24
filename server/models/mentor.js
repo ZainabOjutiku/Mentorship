@@ -3,8 +3,9 @@ mongoose.Promise = global.Promise;
 
 var RatingSchema = new mongoose.Schema({
     stars: Number,
-    reviews : String
-})
+    reviews : String,
+    name: String
+},{timestamps: true})
 var MenteeSchema = new mongoose.Schema({
     name: {type: String, required:[true, "name is required"], minLength:3},
     description: {type: String, required:[true, "description is required"], minLength:3},

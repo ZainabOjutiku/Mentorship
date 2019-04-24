@@ -1,6 +1,6 @@
 
 <section class="content-section bg-light" id="about">
-  <div class="container ">
+  <div class="container " *ngIf="viewMentor.id!=='' ">
 
     <!-- Portfolio Item Row -->
     <div class="row">
@@ -10,17 +10,40 @@
       </div>
 
       <div class="col-md-4">
-        <h1 class="my-4">{{viewMentor.name}}</h1>
+        <h1 class="my-4">{{viewMentor.name}} ⭐</h1>
         <p class="text-secondary mb-0">{{viewMentor.skills}}</p>
         <h3 class="my-3">About Me</h3>
         <p>{{viewMentor.description}}</p>
         <h3 class="my-3">Ratings</h3>
-        <ul>
-          <li>Dolor Sit Amet</li>
-          <li>Consectetur</li>
-          <li>Adipiscing Elit</li>
-        </ul>
+        <div class="card">
+          <h5 class="card-header">Reviews</h5>
+          <div class="card-body">
+            <h5 class="card-title">Average Rating:{{viewMentor.avgRating}}</h5>
+            <div *ngFor= 'let rating of viewMentor.ratings'>
+
+            <p>{{rating.stars}}</p>
+            <p>{{rating.reviews}}</p>
+            <small class="text-muted">Posted by {{rating.name}} on 3/1/17</small>
+            <hr>
+            </div>
+            <h5 class="card-title">Add a Review:</h5>
+            <form (submit)='addRating(viewMentor._id, stars, reviews,name)'>
+              <select #stars>
+                <option value= '1'> ⭐</option>
+                <option value= '2'> ⭐⭐</option>
+                <option value= '3'> ⭐⭐⭐</option>
+                <option value= '4'> ⭐⭐⭐⭐</option>
+                <option value= '5'> ⭐⭐⭐⭐⭐</option>
+              </select>
+              <input type="text" placeholder="Comment" #reviews>
+              <input type="text" placeholder="name" #name>
+              <input type="submit" value="Add Your Review">
+            </form>
+<!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+          </div>
+        </div>
       </div>
+
     </div>
     </div>
 
