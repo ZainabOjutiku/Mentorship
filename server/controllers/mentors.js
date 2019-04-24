@@ -5,27 +5,42 @@ var Rating = require('../models/mentor').rating;
 module.exports={
     
     AllMentors : function(req, res){
+        console.log("All mentors", req.body);
         Mentor.find({}, function (err, mentors){
             if(err){
                 res.json({message: "Could not be found", data:mentors})
             }
             else{
                 res.json({message:"Success", data: mentors})
+                console.log("POST DATAbbb", mentors);
             }
         })
     },
-    NewMentor : function(req, res){
-        var newMentor = new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skill : []})
+    // NewMentor : function(req, res){
+    //     console.log("POST DATA", req.body);
+    //     var newMentor = new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills });
+    //     newMentor.save(function(err){
+    //         if (err){
+    //             res.json({message:"Could not be found", data:newMentor})
+    //         }
+    //         else{
+    //             res.json({message : "Success", data:newMentor})
+    //             console.log("POST DATAhhh", req.body);
+    //         }
+    //     })
+    // },
+    NewMentors : function(req,res){
+        console.log("POST DATA", req.body);
+        var newMentor =new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills})
         newMentor.save(function(err){
             if (err){
-                res.json({message:"Could not be found", data:newMentor})
+                res.json({message:"Can not create data", error: err })
             }
             else{
                 res.json({message : "Success", data : newMentor})
             }
         })
     },
-
     NewRating: function(req, res){
         Mentor.findById({ _id: req.params.id }, function (err, mentor) {
             if (err) {
@@ -87,7 +102,7 @@ module.exports={
 
         })
     },
-    destroyRating: function (req, res) {
+    "destroyRating": function (req, res) {
         Rating.remove({_id: req.params.id}, function (err, ratings) {
             console.log("one rating to delte", ratings);
             if (err) {

@@ -27,7 +27,7 @@ export class HttpService {
 
   findOneMentor(mentor){
     console.log("Finding a mentor", mentor);
-    return this._http.get(`/onementor/${mentor._id}`, mentor);
+    return this._http.get(`/onementor/${mentor}`, mentor);
   }
   deleteMentor(mentor){
     console.log("Deleting mentor..", mentor._id);

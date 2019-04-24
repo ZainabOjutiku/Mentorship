@@ -6,7 +6,8 @@ module.exports = function(app) {
         mentors.AllMentors(req,res);
     });
     app.post('/newmentor', function (req, res) {
-        mentors.NewMentor(req,res);
+        console.log("new mentor");
+        mentors.NewMentors(req,res);
     });
     app.post('/newRating/:id', function (req, res) {
         console.log("ratings",req.params.id);
