@@ -1,0 +1,63 @@
+
+<section class="content-section bg-light" id="about">
+  <div class="container " *ngIf="viewMentor.id!=='' ">
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+      <div class="col-md-3">
+        <img class="img-fluid" src="{{viewMentor.url}}" alt="">
+      </div>
+
+      <div class="col-md-4">
+        <h1 class="my-4">{{viewMentor.name}} ⭐</h1>
+        <p class="text-secondary mb-0">{{viewMentor.skills}}</p>
+        <h3 class="my-3">About Me</h3>
+        <p>{{viewMentor.description}}</p>
+        <h3 class="my-3">Ratings</h3>
+        <div class="card">
+          <h5 class="card-header">Reviews</h5>
+          <div class="card-body">
+            <h5 class="card-title">Average Rating:{{viewMentor.avgRating}}</h5>
+            <div *ngFor= 'let rating of viewMentor.ratings'>
+<<<<<<< HEAD
+              <p *ngIf="rating.stars == 1">⭐</p>
+              <p *ngIf="rating.stars == 2">⭐⭐</p>
+              <p *ngIf="rating.stars == 3">⭐⭐⭐</p>
+              <p *ngIf="rating.stars == 4">⭐⭐⭐⭐</p>
+              <p *ngIf="rating.stars == 5">⭐⭐⭐⭐⭐</p>
+              <p>{{rating.reviews}}</p>
+=======
+
+            <p>{{rating.stars}}</p>
+            <p>{{rating.reviews}}</p>
+>>>>>>> da13d12130b09a083411b355adbf85fb27cb6c7c
+            <small class="text-muted">Posted by {{rating.name}} on 3/1/17</small>
+            <hr>
+            </div>
+            <h5 class="card-title">Add a Review:</h5>
+            <form (submit)='addRating(viewMentor._id, stars, reviews,name)'>
+              <select #stars>
+                <option value= '1'> ⭐</option>
+                <option value= '2'> ⭐⭐</option>
+                <option value= '3'> ⭐⭐⭐</option>
+                <option value= '4'> ⭐⭐⭐⭐</option>
+                <option value= '5'> ⭐⭐⭐⭐⭐</option>
+              </select>
+              <input type="text" placeholder="Comment" #reviews>
+              <input type="text" placeholder="name" #name>
+              <input type="submit" value="Add Your Review">
+            </form>
+<!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<<<<<<< HEAD
+=======
+          <a [routerLink]="['/chat']">Chat with one of our mentor</a>
+>>>>>>> da13d12130b09a083411b355adbf85fb27cb6c7c
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+</section>

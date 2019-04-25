@@ -5,11 +5,12 @@ import { ShowComponent } from './show/show.component';
 import { CreateComponent } from './create/create.component';
 import { ChatComponent } from './chat/chat.component';
 
+
 const routes: Routes = [
   {path: "", pathMatch: "full", component: HomeComponent },
   {path: "mentor/:id", component: ShowComponent},
   {path: "mentor/new", component: CreateComponent},
-  {path: "mentor/chat", component: ChatComponent}
+  {path: "chat", component: ChatComponent}
 ];
 
 @NgModule({
