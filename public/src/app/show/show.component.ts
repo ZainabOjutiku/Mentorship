@@ -35,19 +35,28 @@ export class ShowComponent implements OnInit {
       })
     })
   }
-  addRating(id, thisstars, thisreviews,thisname){
-    this.newRating.id= id;
-    this.newRating.stars= thisstars.value;
-    this.newRating.name= thisname.value;
-    this.newRating.reviews= thisreviews.value;
+  addRating(id, thisstars, thisreviews,thisname) {
+    this.newRating.id = id;
+    this.newRating.stars = thisstars.value;
+    this.newRating.name = thisname.value;
+    this.newRating.reviews = thisreviews.value;
     console.log("my rATING", this.newRating)
     let myRating = this._httpService.createRating(this.newRating, id);
     myRating.subscribe(data => {
       this.findMentor();
-      this.newRating = {stars: "", name:" ",reviews: ""};
+      this.newRating = {stars: "", name: " ", reviews: ""};
     });
-
   }
 
+  // addRating(){
+  //   let observable = this._httpService.createRating(this.newRating);
+  //   observable.subscribe(data => {
+  //     console.log("creating rating", data)
+  //     this.newRating = {stars: "", name:" ",reviews: ""};
+  //
+  //     // this.newMentor={name: " ", url: " ",description:"",skills:[""]};
+  //     // this._httpService.scrollTo("services");
+  //   });
+  // }
 
 }
