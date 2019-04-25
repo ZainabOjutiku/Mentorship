@@ -45,7 +45,10 @@ export class AppComponent implements OnInit  {
       let observable = this._httpService.createMentor(this.newMentor);
       observable.subscribe(data => {
         console.log("creating data", data)
-        this._router.navigate(["/"]);
+        this.getAllMentors();
+        this.newMentor={name: " ", url: " ",description:"",skills:[""]};
+        this._httpService.scrollTo("services");
+        // this._router.navigate(["/"]);
 
 
 
@@ -59,5 +62,8 @@ export class AppComponent implements OnInit  {
     }
     console.log(this.currentMentor)
     }
+
+
+
 
 }

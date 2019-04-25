@@ -19,6 +19,7 @@ export class ShowComponent implements OnInit {
   ngOnInit() {
     this.newRating = {stars: "", name:" ",reviews: "", id: ""};
     this.findMentor()
+    this._httpService.scrollTo("person");
   }
 
   findMentor(){
@@ -26,7 +27,7 @@ export class ShowComponent implements OnInit {
       console.log(params['id']);
       console.log("finding a mentor");
       let observable = this._httpService.findOneMentor(params["id"]);
-      observable.subscribe(data =>{
+      observable.subscribe(data => {
         console.log(data)
         this.viewMentor = data['data']
         console.log("details data",this.viewMentor)
@@ -41,10 +42,11 @@ export class ShowComponent implements OnInit {
     this.newRating.reviews= thisreviews.value;
     console.log("my rATING", this.newRating)
     let myRating = this._httpService.createRating(this.newRating, id);
-    myRating.subscribe(function(data){
-      this._router.navigate(["/mentors/._id"]);
+    myRating.subscribe(data => {
+      this.findMentor();
+      this.newRating = {stars: "", name:" ",reviews: ""};
     });
-    this.newRating ={stars: "", name:" ",reviews: ""}
+
   }
 
 

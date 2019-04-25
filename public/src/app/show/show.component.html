@@ -20,9 +20,12 @@
           <div class="card-body">
             <h5 class="card-title">Average Rating:{{viewMentor.avgRating}}</h5>
             <div *ngFor= 'let rating of viewMentor.ratings'>
-
-            <p>{{rating.stars}}</p>
-            <p>{{rating.reviews}}</p>
+              <p *ngIf="rating.stars == 1">⭐</p>
+              <p *ngIf="rating.stars == 2">⭐⭐</p>
+              <p *ngIf="rating.stars == 3">⭐⭐⭐</p>
+              <p *ngIf="rating.stars == 4">⭐⭐⭐⭐</p>
+              <p *ngIf="rating.stars == 5">⭐⭐⭐⭐⭐</p>
+              <p>{{rating.reviews}}</p>
             <small class="text-muted">Posted by {{rating.name}} on 3/1/17</small>
             <hr>
             </div>

@@ -37,5 +37,13 @@ export class HttpService {
     console.log("Deleting rating", rating);
     return this._http.delete(`/delete/rating/${rating._id}`, rating);
   }
+  scrollTo(str){
+    let topPos = document.getElementById(str);
+    window.scrollTo({
+      top: topPos.offsetTop,
+      left: 0,
+      behavior:'smooth'
+    })
+  }
 
 }

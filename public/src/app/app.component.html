@@ -33,7 +33,7 @@
     </div>
     <div class="" >
       <div class="col-lg-3 col-md-6 mb-5 mb-lg-0 d-inline-block" *ngFor="let mentor of allMentors">
-        <a [routerLink]="['/mentor',mentor._id]"><img class="img-fluid" src="{{mentor.url}}" alt="">
+        <a class="js-scroll-trigger" [routerLink]="['/mentor',mentor._id]" href="#person"><img class="img-fluid" src="{{mentor.url}}" alt="">
         </a>
         <h4>
           <strong>{{mentor.name}}</strong>
@@ -44,16 +44,18 @@
 
   </div>
   <div>
-    <a class="btn btn-primary mt-5" [routerLink]="['/mentor/new']">Become A Mentor</a>
-    <a class="btn btn-dark btn-xl js-scroll-trigger mt-5" href="#portfolio">Meet Our Mentors</a>
+<!--    <a class="btn btn-primary mt-5" [routerLink]="['/mentor/new']">Become A Mentor</a>-->
+    <a class="btn btn-dark btn-xl js-scroll-trigger mt-5" href="#portfolio">Become A Mentors</a>
 
   </div>
 
 </section>
 
 <!--<app-show [viewMentor]="currentCMentorfornested"></app-show>-->
+<div id="person">
+  <router-outlet></router-outlet>
 
-<router-outlet></router-outlet>
+</div>
 
 <!--&lt;!&ndash; Callout &ndash;&gt;-->
 <!--<section class="callout">-->
@@ -70,7 +72,7 @@
   <div class="container">
     <div class="content-section-heading text-center">
       <h3 class="text-secondary mb-0">Portfolio</h3>
-      <h2 class="mb-5">Recent Projects</h2>
+<!--      <h2 class="mb-5">Recent Projects</h2>-->
     </div>
     <div class="card col-sm-6 offset-sm-3 mt-5">
       <div class="card-header">
@@ -90,7 +92,7 @@
           </div>
           <div class="form-group">
             <label for="inputname1">Skils</label>
-            <input type="Text" class="form-control" id="inputname1" name="newMentor.skills" [(ngModel)]="newMentor.skills" placeholder="Enter type"/>
+            <input type="Text" class="form-control" id="inputname1" name="newMentor.skills" [(ngModel)]="newMentor.skills" placeholder="Enter skills"/>
             <!--        <small id="inputname1Help" class="form-text text-muted" *ngIf="newPet.type.length < 3 && newPet.type.length > 0"> Type is required.</small>-->
 
           </div>
@@ -107,7 +109,7 @@
 
           </div>
 
-          <input type="submit" value="Submit" class="button btn btn-primary offset-sm-3"/>
+          <input type="submit" value="Submit" class="button btn btn-primary offset-sm-4"/>
           <!--      <button class="button btn btn-primary offset-sm-1" [routerLink]="['/pets']" >Cancel</button>-->
 
         </form>
