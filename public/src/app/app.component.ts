@@ -45,6 +45,8 @@ export class AppComponent implements OnInit  {
       let observable = this._httpService.createMentor(this.newMentor);
       observable.subscribe(data => {
         console.log("creating data", data)
+        this._router.navigate(["/"]);
+
 
 
       });

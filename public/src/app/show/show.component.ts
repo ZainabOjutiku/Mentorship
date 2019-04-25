@@ -9,12 +9,15 @@ import {  HttpService } from '../http.service';
 })
 export class ShowComponent implements OnInit {
   viewMentor = {name: ''};
+  newRating;
+
 
   constructor(private _route: ActivatedRoute,
               private _httpService: HttpService,
               private _router: Router) { }
 
   ngOnInit() {
+    this.newRating = {stars: "", name:" ",reviews: "", id: ""};
     this.findMentor()
   }
 
@@ -31,5 +34,18 @@ export class ShowComponent implements OnInit {
       })
     })
   }
+  addRating(id, thisstars, thisreviews,thisname){
+    this.newRating.id= id;
+    this.newRating.stars= thisstars.value;
+    this.newRating.name= thisname.value;
+    this.newRating.reviews= thisreviews.value;
+    console.log("my rATING", this.newRating)
+    let myRating = this._httpService.createRating(this.newRating, id);
+    myRating.subscribe(function(data){
+      this._router.navigate(["/mentors/._id"]);
+    });
+    this.newRating ={stars: "", name:" ",reviews: ""}
+  }
+
 
 }
