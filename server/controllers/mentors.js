@@ -115,4 +115,16 @@ module.exports={
 
         })
     },
+    chat: function(req, res){
+        Mentor.findById({_id: req.params.id}, function(err, mentor){
+            console.log("Chatting in controller", mentor);
+            if(err){
+                res.json({message: "Errroorrr", data:mentor})
+
+            }
+            else{
+                res.json({mesage:"Success in chatting!", data: mentor})
+            }
+        })
+    }
 }

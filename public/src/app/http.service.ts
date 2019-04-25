@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+// import * as io from 'socket.io-client';
+// import { Observable } from 'rxjs/Observable';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+  // private socket;
 
-  constructor(private _http:HttpClient) { }
+
+  constructor(private _http:HttpClient){}
 
   getAllMentors(){
     console.log("All mentors in service!");
@@ -37,5 +43,10 @@ export class HttpService {
     console.log("Deleting rating", rating);
     return this._http.delete(`/delete/rating/${rating._id}`, rating);
   }
+  chatWithMentor(mentorId){
+    console.log("Chatting with mentor in service", mentorId);
+    return this._http.get('/chat');
+  }
+
 
 }
