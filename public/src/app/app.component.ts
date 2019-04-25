@@ -49,10 +49,10 @@ export class AppComponent implements OnInit  {
         this.newMentor={name: " ", url: " ",description:"",skills:[""]};
         this._httpService.scrollTo("services");
         // this._router.navigate(["/"]);
-
-
+    
 
       });
+    
     }
     viewMentor(id){
     for(var i = 0; i < this.allMentors.length; i++){

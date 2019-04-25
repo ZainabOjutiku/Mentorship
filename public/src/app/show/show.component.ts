@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {  HttpService } from '../http.service';
+// import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-show',
@@ -10,16 +11,22 @@ import {  HttpService } from '../http.service';
 export class ShowComponent implements OnInit {
   viewMentor = {name: ''};
   newRating;
+  message: string;
+  messages: string[] =[];
+
 
 
   constructor(private _route: ActivatedRoute,
               private _httpService: HttpService,
-              private _router: Router) { }
+              private _router: Router,
+              // private socket: Socket
+              ) { }
 
   ngOnInit() {
     this.newRating = {stars: "", name:" ",reviews: "", id: ""};
     this.findMentor()
     this._httpService.scrollTo("person");
+
   }
 
   findMentor(){
@@ -35,19 +42,38 @@ export class ShowComponent implements OnInit {
       })
     })
   }
-  addRating(id, thisstars, thisreviews,thisname){
-    this.newRating.id= id;
-    this.newRating.stars= thisstars.value;
-    this.newRating.name= thisname.value;
-    this.newRating.reviews= thisreviews.value;
+  addRating(id, thisstars, thisreviews,thisname) {
+    this.newRating.id = id;
+    this.newRating.stars = thisstars.value;
+    this.newRating.name = thisname.value;
+    this.newRating.reviews = thisreviews.value;
     console.log("my rATING", this.newRating)
     let myRating = this._httpService.createRating(this.newRating, id);
     myRating.subscribe(data => {
       this.findMentor();
-      this.newRating = {stars: "", name:" ",reviews: ""};
+      this.newRating = {stars: "", name: " ", reviews: ""};
     });
-
   }
 
+  // addRating(){
+  //   let observable = this._httpService.createRating(this.newRating);
+  //   observable.subscribe(data => {
+  //     console.log("creating rating", data)
+  //     this.newRating = {stars: "", name:" ",reviews: ""};
+  //
+  //     // this.newMentor={name: " ", url: " ",description:"",skills:[""]};
+  //     // this._httpService.scrollTo("services");
+  //   });
+  // }
+
+  // connectToServer() {
+  //   this.socket.emit('message', {msg: this.message});
+  //   this.socket.fromEvent('new-message').subscribe((data) => {
+  //     this.messages.push(data['msg']);
+  //   });
+  // }
+  // sendMessage() {
+  //   this.socket.emit('saveMsg', {msg : {user : this.message, message: this.message}});
+  // }
 
 }

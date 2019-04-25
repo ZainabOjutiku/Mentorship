@@ -14,9 +14,10 @@
   <div class="container text-center">
     <div class="row">
       <div class="col-lg-10 mx-auto">
-        <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-        <p class="lead mb-5">This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-          <a href="https://unsplash.com/">Unsplash</a>!</p>
+        <h2>Have you always wanted to be a mentor to someone in need, but didn’t think you had the time? Do you want to share your personal and professional experiences to help make a difference in a  person’s life?
+
+        </h2>
+        <!-- <img src="http://www.jposc.undp.org/content/dam/jposc/img/Mentoring/Capture2.PNG" alt="" style="width:600px;"> -->
         <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Meet Our Mentors</a>
       </div>
     </div>
@@ -33,7 +34,7 @@
     </div>
     <div class="" >
       <div class="col-lg-3 col-md-6 mb-5 mb-lg-0 d-inline-block" *ngFor="let mentor of allMentors">
-        <a class="js-scroll-trigger" [routerLink]="['/mentor',mentor._id]" href="#person"><img class="img-fluid" src="{{mentor.url}}" alt="">
+        <a class="js-scroll-trigger" [routerLink]="['/mentor',mentor._id]" href="#person"><img class="rounded-circle" src="{{mentor.url}}" alt="" style="width:200px; height:180px;">
         </a>
         <h4>
           <strong>{{mentor.name}}</strong>
@@ -68,10 +69,10 @@
 <!--</section>-->
 
 <!-- Portfolio -->
-<section class="content-section" id="sign up">
-  <div class="container">
+<section class="content-section" id="sign up" style="background-color:#E6B331;">
+  <div class="container" >
     <div class="content-section-heading text-center">
-      <h3 class="text-secondary mb-0">Portfolio</h3>
+
 <!--      <h2 class="mb-5">Recent Projects</h2>-->
     </div>
     <div class="card col-sm-6 offset-sm-3 mt-5">
@@ -87,31 +88,30 @@
           <div class="form-group">
             <label for="inputname">Name</label>
             <input type="text" class="form-control"  id="inputname" name="newMentor.name" [(ngModel)]="newMentor.name" placeholder="Enter name"/>
-            <!--        <small id="inputnameHelp" class="form-text text-muted" *ngIf="newPet.name.length < 3 && newPet.name.length > 0"> Name is required.</small>-->
+                   <small id="inputnameHelp" class="form-text text-muted" *ngIf="newMentor.name.length < 3 && newMentor.name.length > 0"> Name is required.</small>
 
           </div>
           <div class="form-group">
-            <label for="inputname1">Skils</label>
-            <input type="Text" class="form-control" id="inputname1" name="newMentor.skills" [(ngModel)]="newMentor.skills" placeholder="Enter skills"/>
-            <!--        <small id="inputname1Help" class="form-text text-muted" *ngIf="newPet.type.length < 3 && newPet.type.length > 0"> Type is required.</small>-->
+            <label for="inputname1">Skills</label>
+            <input type="text" class="form-control" id="inputname1" name="newMentor.skills" [(ngModel)]="newMentor.skills" placeholder="Enter skills"/>
+                   <small id="inputname1Help" class="form-text text-muted" *ngIf="newMentor.skills.length < 3 && newMentor.skills.length > 0"> Skills is required.</small>
 
           </div>
           <div class="form-group">
             <label for="inputname2">Description</label>
             <input type="text" class="form-control" id="inputname2" name="newMentor.description" [(ngModel)]="newMentor.description" placeholder="Enter description"/>
-            <!--        <small id="inputname2Help" class="form-text text-muted" *ngIf="newPet.description.length < 3 && newPet.description.length > 0"> Description is required.</small>-->
+                   <small id="inputname2Help" class="form-text text-muted" *ngIf="newMentor.description.length < 3 && newMentor.description.length > 0"> Description is required.</small>
 
           </div>
           <div class="form-group">
             <label for="inputname2">Image</label>
-            <input type="text" class="form-control" id="inputname3" name="newMentor.url" [(ngModel)]="newMentor.url" placeholder="Enter description"/>
-            <!--        <small id="inputname2Help" class="form-text text-muted" *ngIf="newPet.description.length < 3 && newPet.description.length > 0"> Description is required.</small>-->
+            <input type="text" class="form-control" id="inputname3" name="newMentor.url" [(ngModel)]="newMentor.url" placeholder="Enter image"/>
+                   <small id="inputname2Help" class="form-text text-muted" *ngIf="newMentor.url.length < 3 && newMentor.url.length > 0"> Image is required.</small>
 
           </div>
 
           <input type="submit" value="Submit" class="button btn btn-primary offset-sm-4"/>
-          <!--      <button class="button btn btn-primary offset-sm-1" [routerLink]="['/pets']" >Cancel</button>-->
-
+         
         </form>
       </div>
     </div>
@@ -183,7 +183,7 @@
 <section class="content-section bg-primary text-white">
   <div class="container text-center">
     <h2 class="mb-4">Find a Mentor close to you...</h2>
-    <a href="#" class="btn btn-xl btn-light mr-4">Click Me!</a>
+    <a href="#" class="btn btn-xl btn-light mr-4">Go Back!</a>
     <a href="#contact" class="btn btn-xl btn-dark">Search!</a>
   </div>
 </section>
