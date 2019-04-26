@@ -5,10 +5,6 @@ var session = require('express-session');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var id= 0;
-var messages ={};
-var users ={};
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -27,31 +23,20 @@ require('./server/config/routes.js')(app)
 mongoose.connect('mongodb://localhost/Mentorship');
 
 require("./server/config/mongoose.js");
+//sockets
+var messages = "";
 
 //port
-var server= app.listen(8000, function() {
+var server = app.listen(8000, function() {
     console.log("listening on port 8000");
 })
-
-//sockets
-var io= require('socket.io').listen(server)
+var io = require('socket.io').listen(server)
 io.sockets.on('connection', function(socket){
-    console.log("Client/socket is connected!");
-    console.log("Client/socket id is :", socket.id);
-
-	socket.on("new_user", function(data){
-		users[socket.id] = {name:data.name};
-		socket.emit('existing_messages', messages);
-		io.emit("display_new_user", {name:data.name})
-	});
-	socket.on("new_message", function(data){
-		messages[id] = {name:data.name, message:data.message};
-		io.emit("update_messages", messages[id]);
-		id++;
+    socket.on("clientConnected", function(){
+        io.emit("updateMessage", messages);
+    })
+	socket.on("messageFromClient", function(data){
+		messages += "<p>" + data + "</p>"
+		io.emit("updateMessage", messages);
 	})
-	socket.on("disconnect", function(){
-		io.emit("user_disconnect", users[socket.id])
-	})
-       
-
 })

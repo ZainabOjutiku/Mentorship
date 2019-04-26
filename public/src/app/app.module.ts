@@ -7,8 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ShowComponent } from './show/show.component';
-import { CreateComponent } from './create/create.component';
-import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -17,15 +15,12 @@ import { ChatComponent } from './chat/chat.component';
     AppComponent,
     HomeComponent,
     ShowComponent,
-    CreateComponent,
-    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    // SocketIoModule.forRoot(config)
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
