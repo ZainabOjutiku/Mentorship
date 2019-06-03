@@ -1,46 +1,54 @@
 <section class="content-section bg-light" id="about">
   <div class="container " *ngIf="viewMentor.id!=='' ">
 
-    <!-- Portfolio Item Row -->
+    <!-- View Mentor Item Row -->
     <div class="row">
       <div class="col-md-3">
         <img class="img-fluid" src="{{viewMentor.url}}" alt="">
+        <a [routerLink]="['/mentor/update/',viewMentor._id]">Edit Profile</a> 
+      
       </div>
       <div class="col-md-4">
-        <h1 class="my-4">{{viewMentor.name}} ⭐</h1>
-        <p class="text-secondary mb-0">{{viewMentor.skills}}</p>
+        <h1 class="my-4">{{viewMentor.name}}</h1>
+        <p style="margin:-5px;" class="text-secondary mb-4">{{viewMentor.skills}}</p>
         <h3 class="my-3">About Me</h3>
         <p>{{viewMentor.description}}</p>
         <h3 class="my-3">Ratings</h3>
         <div class="card">
           <h5 class="card-header">Reviews</h5>
           <div class="card-body">
-            <h5 class="card-title">Average Rating:{{viewMentor.avgRating}}</h5>
+            <h5 class="card-title" style="color:cadetblue; font-family: Georgia, 'Times New Roman', Times, serif;">Average Rating: {{viewMentor.avgRating}}</h5>
+            <hr>  
             <div *ngFor='let rating of viewMentor.ratings'>
-              <p *ngIf="rating.stars == 1">⭐</p>
-              <p *ngIf="rating.stars == 2">⭐⭐</p>
-              <p *ngIf="rating.stars == 3">⭐⭐⭐</p>
-              <p *ngIf="rating.stars == 4">⭐⭐⭐⭐</p>
-              <p *ngIf="rating.stars == 5">⭐⭐⭐⭐⭐</p>
+                <p *ngIf="rating.stars == 5">⭐⭐⭐⭐⭐</p>
+                <p *ngIf="rating.stars == 4">⭐⭐⭐⭐</p>
+                <p *ngIf="rating.stars == 3">⭐⭐⭐</p> 
+                <p *ngIf="rating.stars == 2">⭐⭐</p>
+                <p *ngIf="rating.stars == 1">⭐</p>
               <p>{{rating.reviews}}</p>
-              <small class="text-muted">Posted by {{rating.name}} on 3/1/17</small>
+              <small class="text-muted">Posted by {{rating.name}}</small>
               <hr>
             </div>
             <h5 class="card-title">Add a Review:</h5>
             <form (submit)='addRating(viewMentor._id, stars, reviews,name)'>
               <select #stars>
-                <option value='1'> ⭐</option>
-                <option value='2'> ⭐⭐</option>
-                <option value='3'> ⭐⭐⭐</option>
-                <option value='4'> ⭐⭐⭐⭐</option>
-                <option value='5'> ⭐⭐⭐⭐⭐</option>
+                  <option value='5'> ⭐⭐⭐⭐⭐</option>
+                  <option value='4'> ⭐⭐⭐⭐</option>
+                  <option value='3'> ⭐⭐⭐</option>
+                  <option value='2'> ⭐⭐</option>
+                  <option value='1'> ⭐</option>
               </select>
-              Comments:<input type="text" placeholder="Comment" #reviews>
-              Name:<input type="text" placeholder="name" #name>
-              <input type="submit" value="Add Your Review">
+              <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="name" class="form-control" id="name" placeholder="Enter your name" #name>
+                </div>
+              <div class="form-group">
+                <label for="comment">Comments:</label>
+                <input type="comment" class="form-control" id="comment" aria-describedby="" placeholder="Enter your comment here" #reviews>
+              </div>
+              <button type="submit" class="btn btn-primary">Add your Review</button>
             </form>
-            <!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
-            <!-- <a [routerLink]="['/chat']">Chat with one of our mentor</a> -->
+    
           </div>
         </div>
       </div>
@@ -59,7 +67,6 @@
       </div>
     </div>
   </div>
-  <!-- <router-outlet></router-outlet> -->
+ 
+ <router-outlet></router-outlet>
 </section>
-<!--       
-</section> -->

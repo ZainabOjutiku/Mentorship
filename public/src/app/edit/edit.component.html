@@ -1,0 +1,38 @@
+<section class="callout">
+ <div class="container text-center col-sm-4">
+    <form (submit)=" editSubmit()">
+        <div class="form-group">
+          <label for="inputname" style="color:cadetblue; font-size:15pt;">Name</label>
+          <input type="text" class="form-control"  id="inputname" name="editMentor.name" [(ngModel)]="editMentor.name" placeholder="Enter name"/>
+                 <small id="inputnameHelp" class="form-text text-muted" *ngIf="editMentor.name.length < 3 && editMentor.name.length > 0"> Name is required.</small>
+    
+        </div>
+        <div class="form-group">
+          <label for="inputname1" style="color:cadetblue; font-size:15pt;">Skills</label>
+          <input type="text" class="form-control" id="inputname1" name="editMentor.skills" [(ngModel)]="editMentor.skills" placeholder="Enter skills"/>
+                 <small id="inputname1Help" class="form-text text-muted" *ngIf="editMentor.skills.length < 3 && editMentor.skills.length > 0"> Skills is required.</small>
+    
+        </div>
+        <div class="form-group">
+          <label for="inputname2" style="color:cadetblue; font-size:15pt;">Description</label>
+          <input type="text" class="form-control" id="inputname2" name="editMentor.description" [(ngModel)]="editMentor.description" placeholder="Enter description"/>
+                 <small id="inputname2Help" class="form-text text-muted" *ngIf="editMentor.description.length < 3 && editMentor.description.length > 0"> Description is required.</small>
+    
+        </div>
+        <div class="form-group">
+          <label for="inputname2" style="color:cadetblue; font-size:15pt;">Image</label>
+          <input type="text" class="form-control" id="inputname3" name="editMentor.url" [(ngModel)]="editMentor.url" placeholder="Enter image"/>
+                 <small id="inputname2Help" class="form-text text-muted" *ngIf="editMentor.url.length < 3 && editMentor.url.length > 0"> Image is required.</small>
+    
+        </div>
+    
+        <input type="submit" value="Submit" class="button btn btn-primary"/>
+      </form>
+
+      <button id="userSet" (click)="deleteMentor(editMentor)" class="btn btn-danger" style="margin:20px;">Delete Profile!</button>
+     
+      
+
+</div>
+</section>
+

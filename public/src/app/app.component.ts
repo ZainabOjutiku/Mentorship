@@ -21,7 +21,7 @@ export class AppComponent implements OnInit  {
   }
 
   ngOnInit() {
-    this.newMentor= {name: " ", url: " ",description:"",skills:[""]};
+    this.newMentor= {name: "", url: "",description:"",skills:[""]};
     this.allMentors=[];
     this.currentMentor ={id:"", ratings: []};
     this.getAllMentors();
@@ -29,13 +29,12 @@ export class AppComponent implements OnInit  {
 
 
   getAllMentors() {
-    console.log("getting mentors")
-
+    console.log("getting mentors");
     let observable = this._httpService.getAllMentors();
     observable.subscribe(data =>{
-      console.log(this.allMentors)
-      console.log(data['data'])
-      this.allMentors = data['data']
+      console.log(this.allMentors);
+      console.log(data['data']);
+      this.allMentors = data['data'];
     })
 
 
@@ -44,9 +43,9 @@ export class AppComponent implements OnInit  {
   makeNewMentor() {
       let observable = this._httpService.createMentor(this.newMentor);
       observable.subscribe(data => {
-        console.log("creating data", data)
+        console.log("creating data", data);
         this.getAllMentors();
-        this.newMentor={name: " ", url: " ",description:"",skills:[""]};
+        this.newMentor={name: "", url: "",description:"",skills:[""]};
         this._httpService.scrollTo("services");
         // this._router.navigate(["/"]);
     
@@ -60,10 +59,7 @@ export class AppComponent implements OnInit  {
         this.currentMentor= this.allMentors[i];
       }
     }
-    console.log(this.currentMentor)
+    console.log(this.currentMentor);
     }
-
-
-
 
 }

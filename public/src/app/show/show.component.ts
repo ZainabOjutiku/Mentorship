@@ -63,33 +63,25 @@ export class ShowComponent implements OnInit {
     this.newRating.stars = thisstars.value;
     this.newRating.name = thisname.value;
     this.newRating.reviews = thisreviews.value;
-    console.log("my rATING", this.newRating)
+    console.log("Rating:", this.newRating)
     let myRating = this._httpService.createRating(this.newRating, id);
     myRating.subscribe(data => {
       this.findMentor();
-      this.newRating = { stars: "", name: " ", reviews: "" };
+      this.newRating = { stars: "", name: "", reviews: "" };
     });
   }
 
-  // addRating(){
-  //   let observable = this._httpService.createRating(this.newRating);
-  //   observable.subscribe(data => {
-  //     console.log("creating rating", data)
-  //     this.newRating = {stars: "", name:" ",reviews: ""};
-  //
-  //     // this.newMentor={name: " ", url: " ",description:"",skills:[""]};
-  //     // this._httpService.scrollTo("services");
-  //   });
-  // }
 
-  // connectToServer() {
-  //   this.socket.emit('message', {msg: this.message});
-  //   this.socket.fromEvent('new-message').subscribe((data) => {
-  //     this.messages.push(data['msg']);
-  //   });
-  // }
-  // sendMessage() {
-  //   this.socket.emit('saveMsg', {msg : {user : this.message, message: this.message}});
-  // }
+  //add delete review
+  // deleteRating(){
+  //   console.log("Deleting review");
+  //   let obs= this._httpService.deleteReview(this.addRating);
+  //   obs.subscribe(data =>{
+  //     console.log("Deleting review in show component");
+  //     this._httpService.scrollTo("services");
+  //   })
 
-}
+  }
+
+
+

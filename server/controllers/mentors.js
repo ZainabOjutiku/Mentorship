@@ -16,19 +16,7 @@ module.exports={
             }
         })
     },
-    // NewMentor : function(req, res){
-    //     console.log("POST DATA", req.body);
-    //     var newMentor = new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills });
-    //     newMentor.save(function(err){
-    //         if (err){
-    //             res.json({message:"Could not be found", data:newMentor})
-    //         }
-    //         else{
-    //             res.json({message : "Success", data:newMentor})
-    //             console.log("POST DATAhhh", req.body);
-    //         }
-    //     })
-    // },
+
     NewMentors : function(req,res){
         console.log("POST DATA", req.body);
         var newMentor =new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills})
@@ -115,16 +103,5 @@ module.exports={
 
         })
     },
-    // chat: function(req, res){
-    //     Mentor.findById({_id: req.params.id}, function(err, mentor){
-    //         console.log("Chatting in controller", mentor);
-    //         if(err){
-    //             res.json({message: "Errroorrr", data:mentor})
 
-    //         }
-    //         else{
-    //             res.json({mesage:"Success in chatting!", data: mentor})
-    //         }
-    //     })
-    // }
 }

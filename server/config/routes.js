@@ -1,5 +1,6 @@
 var mentors = require('../controllers/mentors');
-var path = require('path')
+var path = require('path');
+
 module.exports = function(app) {
    
     app.get('/allmentors', function (req, res) {
@@ -21,17 +22,13 @@ module.exports = function(app) {
         console.log("routes",req.params.id);
         mentors.findMentor(req,res);
     });
-    app.delete('/deletementor/:id', function (req, res) {
+    app.delete('/mentor/delete/:id', function (req, res) {
         mentors.destroy(req,res);
     });
     app.delete('/delete/rating/:id', function (req, res) {
         mentors.destroyRating(req,res);
     });
-    //chat componenent
-    // app.get('/chat', function(req, res){
-    //     mentors.chat(req, res);
-    // })
-
+    //if cannot find these routes, it will use app.routing-module.ts
     app.all("*", (req,res,next) => {
         res.sendFile(path.resolve("./public/dist/public/index.html"))
     });

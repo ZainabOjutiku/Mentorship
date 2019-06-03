@@ -1,4 +1,4 @@
-//HELLO
+
 var express = require("express");
 var path = require("path");
 var session = require('express-session');
@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "./static")));
 app.use(session({
-    secret: 'keyboardkitteh',
+    secret: 'pankoandtofu17',
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
@@ -23,13 +23,14 @@ require('./server/config/routes.js')(app)
 mongoose.connect('mongodb://localhost/Mentorship');
 
 require("./server/config/mongoose.js");
-//sockets
+
 var messages = "";
 
 //port
 var server = app.listen(8000, function() {
     console.log("listening on port 8000");
 })
+//socket
 var io = require('socket.io').listen(server)
 io.sockets.on('connection', function(socket){
     socket.on("clientConnected", function(){
