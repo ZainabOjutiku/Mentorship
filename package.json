@@ -17,7 +17,7 @@
     "express": "^4.16.4",
     "express-flash": "0.0.2",
     "express-session": "^1.16.1",
-    "mongoose": "^5.4.22",
+    "mongoose": "^5.7.5",
     "ngx-socket-io": "^2.1.1",
     "socket-io": "^1.0.0",
     "socket.io": "^2.2.0",
